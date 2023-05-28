@@ -1,9 +1,12 @@
-FROM node:18.14
+FROM node:20
 
-COPY ./app/scripts                  /app/scripts
-COPY ./scripts/utils.sh     /app/scripts/utils.sh
-COPY ./app/src                      /app/src
+COPY ./package.json     /app/package.json
+COPY ./scripts          /app/scripts
+COPY ./public           /app/public
+COPY ./src              /app/src
 
-WORKDIR /app/src
+WORKDIR /app
+
+RUN npm install
 
 CMD ["sh", "/app/scripts/entrypoint.sh"]

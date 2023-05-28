@@ -3,7 +3,7 @@ import { localStorageService } from "./localStorageService";
 
 export const API = {
 
-  PAGE_SIZE: parseInt(process.env.REACT_APP_PAGE_SIZE!),
+  PAGE_SIZE: 10,
 
   createClient(headers: object = {}): AxiosInstance {
     const axiosConfig: CreateAxiosDefaults = {
