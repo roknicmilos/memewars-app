@@ -51,3 +51,9 @@ You can learn more in
 the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Deployment
+
+Deployment to the STAGING and PRODUCTION server is automated via GitHub Actions.
+Check [.github/workflows/](.github/workflows) directory for more details about
+deployment configuration.
