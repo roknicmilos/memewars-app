@@ -18,12 +18,6 @@
       "labels": [
         "bugfix"
       ]
-    },
-    {
-      "title": "## 🌐 Translations",
-      "labels": [
-        "translations"
-      ]
     }
   ],
   "ignore_labels": [],
