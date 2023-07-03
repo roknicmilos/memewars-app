@@ -12,10 +12,11 @@ interface MemeOptionsProps {
   isExpanded: boolean;
   onStatusClick(): void;
   onDeleteMeme(): Promise<void>;
+  displayApprovalStatus: boolean;
 }
 
-export function MemeOptions({ approvalStatus, isExpanded, onStatusClick, onDeleteMeme }: MemeOptionsProps) {
-  const [ hasOpenedDeleteModal, setHasOpenedDeleteModal ] = useState<boolean>(false);
+export function MemeOptions({ approvalStatus, isExpanded, onStatusClick, onDeleteMeme, displayApprovalStatus }: MemeOptionsProps) {
+  const [hasOpenedDeleteModal, setHasOpenedDeleteModal] = useState<boolean>(false);
   const memeOptionsContent = getMemeOptionsContent(approvalStatus);
 
   async function handleDeleteMeme(event: MouseEvent) {
@@ -28,25 +29,27 @@ export function MemeOptions({ approvalStatus, isExpanded, onStatusClick, onDelet
   }
 
   return (
-    <div className={ isExpanded ? styles.optionsOpened : styles.options }>
-      <div className={ styles.status } onClick={ onStatusClick }>
-        <img className={ styles.statusIcon } src={ memeOptionsContent.imageSrc } alt={ memeOptionsContent.imageAlt }/>
-        <p className={ styles.statusText } style={ memeOptionsContent.textStyle }>{ memeOptionsContent.text }</p>
+    <div className={isExpanded ? styles.optionsOpened : styles.options} style={displayApprovalStatus ? {} : { width: "unset" }}>
+      {displayApprovalStatus && (
+        <div className={styles.status} onClick={onStatusClick}>
+          <img className={styles.statusIcon} src={memeOptionsContent.imageSrc} alt={memeOptionsContent.imageAlt} />
+          <p className={styles.statusText} style={memeOptionsContent.textStyle}>{memeOptionsContent.text}</p>
+        </div>
+      )}
+      <div className={styles.deleteButton} onClick={() => setHasOpenedDeleteModal(true)}>
+        <img className={styles.deleteIcon} src={trashSVG} alt="trash" />
       </div>
-      <div className={ styles.deleteButton } onClick={ () => setHasOpenedDeleteModal(true) }>
-        <img className={ styles.deleteIcon } src={ trashSVG } alt="trash"/>
-      </div>
-      <Modal onClose={ () => setHasOpenedDeleteModal(false) } isOpened={ hasOpenedDeleteModal }>
-        <div className={ styles.deleteModalContent }>
+      <Modal onClose={() => setHasOpenedDeleteModal(false)} isOpened={hasOpenedDeleteModal}>
+        <div className={styles.deleteModalContent}>
           <p>Not proud of this meme?</p>
           <p>Maybe it's fot the best if no one else sees it 🤫</p>
           <p>Can I delete it? Say "yes"!</p>
-          <div className={ styles.deleteModalButtons }>
-            <button className={ styles.abortDeletionButton } onClick={ () => setHasOpenedDeleteModal(false) }>
-              <p>NO!</p><span className={ styles.emoji }>😡</span>
+          <div className={styles.deleteModalButtons}>
+            <button className={styles.abortDeletionButton} onClick={() => setHasOpenedDeleteModal(false)}>
+              <p>NO!</p><span className={styles.emoji}>😡</span>
             </button>
-            <button className={ styles.confirmDeletionButton } onClick={ handleDeleteMeme }>
-              <p>Yeah</p><span className={ styles.emoji }>😒</span>
+            <button className={styles.confirmDeletionButton} onClick={handleDeleteMeme}>
+              <p>Yeah</p><span className={styles.emoji}>😒</span>
             </button>
           </div>
         </div>
