@@ -2,6 +2,33 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Table of Contents
+=================
+
+* [Project setup](#project-setup)
+    * [Requirements](#requirements)
+    * [Steps](#steps)
+* [Available Scripts](#available-scripts)
+* [Deployment](#deployment)
+* [Learn More](#learn-more)
+
+## Project setup
+
+### Requirements
+
+- **Docker**:
+    - Windows - [Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/)
+    - Mac - [Docker Desktop for Mac](https://docs.docker.com/docker-for-mac/install/)
+    - Linux - [Docker Engine](https://docs.docker.com/engine/install/#server)
+      and [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Steps
+
+1. Create `.env` based on `example.env`
+2. Start the app: `docker compose up`
+
+   For older versions of Docker Compose use: `docker-compose up`
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -45,6 +72,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t
 customize it when you are ready for it.
 
+## Deployment
+
+Deployment to the STAGING and PRODUCTION server is automated via GitHub Actions.
+Check [.github/workflows/](.github/workflows) directory for more details about
+deployment configuration.
+
 ## Learn More
 
 You can learn more in
@@ -52,8 +85,3 @@ the [Create React App documentation](https://facebook.github.io/create-react-app
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-## Deployment
-
-Deployment to the STAGING and PRODUCTION server is automated via GitHub Actions.
-Check [.github/workflows/](.github/workflows) directory for more details about
-deployment configuration.
