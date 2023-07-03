@@ -4,30 +4,30 @@ import { Meme } from "../../../../../models/Meme";
 import { MemeOptions } from "../meme-approval-status/MemeOptions";
 
 interface WarInSubmissionMemeProps {
-  meme: Meme;
-  displayApprovalStatus?: boolean;
-  onDelete(): Promise<void>;
+    meme: Meme;
+    displayApprovalStatus: boolean;
+
+    onDelete(): Promise<void>;
 }
 
 export function WarInSubmissionMeme({ meme, displayApprovalStatus, onDelete }: WarInSubmissionMemeProps) {
-  const [ isShowingDetails, setIsShowingDetails ] = useState<boolean>(false);
+    const [isShowingDetails, setIsShowingDetails] = useState<boolean>(false);
 
-  return (
-    <div className={ styles.meme }>
-      { displayApprovalStatus && (
-        <MemeOptions
-          approvalStatus={ meme.approval_status }
-          isExpanded={ isShowingDetails }
-          onStatusClick={ () => setIsShowingDetails(!isShowingDetails) }
-          onDeleteMeme={ onDelete }
-        />
-      ) }
-      <img
-        className={ styles.memeImage }
-        src={ meme.image }
-        alt="meme"
-        onClick={ () => setIsShowingDetails(!isShowingDetails) }
-      />
-    </div>
-  );
+    return (
+        <div className={styles.meme}>
+            <MemeOptions
+                approvalStatus={meme.approval_status}
+                isExpanded={isShowingDetails}
+                onStatusClick={() => setIsShowingDetails(!isShowingDetails)}
+                onDeleteMeme={onDelete}
+                displayApprovalStatus={displayApprovalStatus}
+            />
+            <img
+                className={styles.memeImage}
+                src={meme.image}
+                alt="meme"
+                onClick={() => setIsShowingDetails(!isShowingDetails)}
+            />
+        </div>
+    );
 }
