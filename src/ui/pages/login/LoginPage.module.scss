@@ -8,35 +8,45 @@
   }
 }
 
-.button {
-  display: flex;
-  align-items: center;
+.buttons {
   width: fit-content;
-
+  max-width: 400px;
   @include respond-to(mobile) {
+    width: 90%;
     margin: 0 auto;
-    padding: 10px 20px;
   }
 }
 
-.darkGoogleIcon, .whiteGoogleIcon {
-  width: 40px;
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  margin: 20px 0;
 }
 
-.whiteGoogleIcon {
+.darkGoogleIcon, .whiteGoogleIcon, .darkSafariIcon, .whiteSafariIcon {
+  width: 30px;
+  margin: 15px 7px 15px 15px;
+}
+
+.whiteGoogleIcon, .whiteSafariIcon {
   display: none;
 }
 
-.button:hover .darkGoogleIcon {
+.button:hover .darkGoogleIcon,
+.button:hover .darkSafariIcon {
   display: none;
 }
 
-.button:hover .whiteGoogleIcon {
+.button:hover .whiteGoogleIcon,
+.button:hover .whiteSafariIcon {
   display: block;
 }
 
 .buttonLabel {
-  margin-left: 20px;
+  margin: 15px 15px 15px 7px;
   font-size: 20px;
   color: $primary-color;
 }
@@ -48,5 +58,3 @@
 .button:focus .buttonLabel {
   color: $primary-color;
 }
-
-
