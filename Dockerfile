@@ -1,9 +1,9 @@
 FROM node:20
 
-COPY ./package.json     /app/package.json
-COPY ./scripts          /app/scripts
-COPY ./public           /app/public
-COPY ./src              /app/src
+COPY ./package.json         /app/package.json
+COPY ./scripts/container    /app/scripts
+COPY ./public               /app/public
+COPY ./src                  /app/src
 
 WORKDIR /app
 

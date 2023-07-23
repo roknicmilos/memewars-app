@@ -1,18 +1,20 @@
 pipeline {
     agent any
     stages {
-        stage("Env vars") {
+        stage("STAGING Deploy") {
+            when {
+                branch 'staging'
+            }
             steps {
-                echo "Start......"
-                sh "printenv"
-                echo "End!!!"
+                sh "sh scripts/pipeline/deploy_staging.sh"
             }
         }
-        stage("Test") {
+        stage("PRODUCTION Deploy") {
+            when {
+                branch 'main'
+            }
             steps {
-                echo "Current directory: $PWD"
-                echo "Content of the current directory:"
-                sh "ls -la"
+                sh "sh scripts/pipeline/deploy_production.sh"
             }
         }
     }
