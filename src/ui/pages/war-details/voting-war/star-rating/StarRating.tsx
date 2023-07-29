@@ -47,9 +47,13 @@ export function StarRating({ memeID }: StarRatingProps) {
     setRating(newRating);
     try {
       if (vote) {
-        await voteService.updateVote(vote.id, newRating);
+        const newVote = await voteService.updateVote(vote.id, newRating);
+        console.log("newVote:", newVote);
+        setVote(newVote);
       } else {
-        await voteService.createVote(memeID, newRating);
+        const updateVote = await voteService.createVote(memeID, newRating);
+        console.log("updateVote:", updateVote);
+        setVote(updateVote);
       }
     } catch (e) {
       setErrorMessage("Error occurred while submitting a rating for this meme");

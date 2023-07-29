@@ -13,14 +13,14 @@ export const voteService = {
   },
 
   async createVote(memeID: number, score: number): Promise<Vote> {
-    const apiClient = API.createClient({ "Content-Type": "multipart/form-data" });
+    const apiClient = API.createClient();
     const response = await apiClient.post("/votes/", { meme: memeID, score: score });
     return response.data;
   },
 
   async updateVote(voteID: number, score: number): Promise<Vote> {
-    const apiClient = API.createClient({ "Content-Type": "multipart/form-data" });
-    const response = await apiClient.patch(`/votes/${voteID}`, { score: score });
+    const apiClient = API.createClient();
+    const response = await apiClient.patch(`/votes/${voteID}/`, { score: score });
     return response.data;
   },
 
