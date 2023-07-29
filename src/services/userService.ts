@@ -6,6 +6,7 @@ export const userService = {
     this._validateUserURLQueryParams(params);
     return {
       token: params.get("token")!,
+      id: parseInt(params.get("id")!),
       email: params.get("email")!,
       firstName: params.get("first_name")!,
       lastName: params.get("last_name")!,
@@ -14,10 +15,10 @@ export const userService = {
   },
 
   _validateUserURLQueryParams(params: URLSearchParams): void {
-    const requiredParamKeys = [ "token", "email", "first_name", "last_name" ];
+    const requiredParamKeys = ["token", "email", "first_name", "last_name"];
     requiredParamKeys.forEach(paramKey => {
       if (!params.has(paramKey)) {
-        throw Error(`Missing URL query parameter "${ paramKey }"`);
+        throw Error(`Missing URL query parameter "${paramKey}"`);
       }
     });
   },

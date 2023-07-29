@@ -9,6 +9,7 @@ interface VotingWarMemeProps {
 }
 
 export function VotingWarMeme({ meme }: VotingWarMemeProps) {
+
   return (
     <div className={styles.meme}>
       <img
@@ -16,7 +17,7 @@ export function VotingWarMeme({ meme }: VotingWarMemeProps) {
         src={meme.image}
         alt={`meme ${meme.id}`}
         onClick={() => window.location.href = meme.image}/>
-      <StarRating/>
+      <StarRating memeID={meme.id}/>
     </div>
   );
 }

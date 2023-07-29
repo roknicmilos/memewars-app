@@ -22,10 +22,10 @@ export function VotingWar({ war }: VotingWarProps) {
         <p>These are the memes of the war <span className={styles.boldText}>{war.name}</span>.</p>
         <p>Their fate is left upon your sense of humor... unfortunately</p>
         <p>Use your best judgement and leave a score for each image.</p>
-        <p>Or don't... I don't care 😒</p>
+        <p>Or don't, I don't care 😒</p>
         {war.requires_meme_approval && (
           <p>
-            Oh, and one more thing... Because this war requires approval of
+            Oh, and one more thing. Because this war requires approval of
             all memes, only the approved memes are listed below.
           </p>
         )}
