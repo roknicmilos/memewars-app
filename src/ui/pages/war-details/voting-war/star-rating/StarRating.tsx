@@ -48,11 +48,9 @@ export function StarRating({ memeID }: StarRatingProps) {
     try {
       if (vote) {
         const newVote = await voteService.updateVote(vote.id, newRating);
-        console.log("newVote:", newVote);
         setVote(newVote);
       } else {
         const updateVote = await voteService.createVote(memeID, newRating);
-        console.log("updateVote:", updateVote);
         setVote(updateVote);
       }
     } catch (e) {
